@@ -1,3 +1,78 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black text-gray-100;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .glass-red {
+    background: rgba(239, 68, 68, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+
+  .glass-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.1), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .glass-hover:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+    transform: translateX(2px);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+  }
+
+  .glass-hover:hover::before {
+    left: 100%;
+  }
+
+  .glass-active {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.1));
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3), inset 0 0 20px rgba(239, 68, 68, 0.1);
+    position: relative;
+  }
+
+  .glass-active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, rgba(239, 68, 68, 0.8), rgba(220, 38, 38, 0.8));
+    border-radius: 0 4px 4px 0;
+  }
+}

@@ -427,9 +427,10 @@ export const cssReference: CSSCategory[] = [
         syntax: 'box-shadow: x y blur spread color;',
         values: ['px', 'color'],
         examples: [
-          { code: 'box-shadow: 0 2px 4px rgba(0,0,0,0.1)', styles: { boxShadow: '0 2px 4px rgba(0,0,0,0.1)', backgroundColor: 'white', padding: '1rem' } },
-          { code: 'box-shadow: 0 4px 6px rgba(0,0,0,0.2)', styles: { boxShadow: '0 4px 6px rgba(0,0,0,0.2)', backgroundColor: 'white', padding: '1rem' } },
-          { code: 'box-shadow: 0 10px 25px rgba(0,0,0,0.3)', styles: { boxShadow: '0 10px 25px rgba(0,0,0,0.3)', backgroundColor: 'white', padding: '1rem' } },
+          { code: 'box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5)', styles: { boxShadow: '0 4px 15px rgba(59, 130, 246, 0.5)', padding: '1rem' } },
+          { code: 'box-shadow: 0 8px 25px rgba(168, 85, 247, 0.6)', styles: { boxShadow: '0 8px 25px rgba(168, 85, 247, 0.6)', padding: '1rem' } },
+          { code: 'box-shadow: 0 15px 35px rgba(236, 72, 153, 0.5)', styles: { boxShadow: '0 15px 35px rgba(236, 72, 153, 0.5)', padding: '1rem' } },
+          { code: 'box-shadow: 0 0 20px rgba(34, 197, 94, 0.4), 0 4px 15px rgba(34, 197, 94, 0.2)', styles: { boxShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 4px 15px rgba(34, 197, 94, 0.2)', padding: '1rem' } },
         ],
       },
       {

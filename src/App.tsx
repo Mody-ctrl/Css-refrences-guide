@@ -55,7 +55,7 @@ function App() {
     : currentCategory?.properties.length || 0;
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-black flex">
       <Sidebar
         categories={cssReference}
         selectedCategory={selectedCategory}
@@ -68,10 +68,10 @@ function App() {
         <main className="flex-1 overflow-y-auto">
           <div className="max-w-5xl mx-auto p-6">
             <div className="mb-6">
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">
+              <h2 className="text-3xl font-bold text-white mb-2">
                 {searchQuery.trim() ? 'Search Results' : currentCategory?.name}
               </h2>
-              <p className="text-gray-600">
+              <p className="text-gray-300">
                 {totalProperties} {totalProperties === 1 ? 'property' : 'properties'} found
               </p>
             </div>
@@ -81,15 +81,15 @@ function App() {
                 {searchResults.length > 0 ? (
                   searchResults.map(({ category, property }) => (
                     <div key={`${category}-${property.id}`}>
-                      <div className="text-sm text-gray-500 mb-2">
-                        From: <span className="font-semibold">{category}</span>
+                      <div className="text-sm text-gray-300 mb-2">
+                        From: <span className="font-semibold text-red-400">{category}</span>
                       </div>
                       <PropertyDemo property={property} />
                     </div>
                   ))
                 ) : (
-                  <div className="bg-white rounded-lg shadow-md p-12 text-center">
-                    <p className="text-gray-500 text-lg">
+                  <div className="glass glass-red rounded-lg p-12 text-center">
+                    <p className="text-gray-200 text-lg">
                       No properties found matching "{searchQuery}"
                     </p>
                     <p className="text-gray-400 mt-2">Try searching for something else</p>

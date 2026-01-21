@@ -1,8 +1,12 @@
 node_modules
 dist
+.env
 .DS_Store
 Thumbs.db
 *.log
+.eslintcache
+.vscode/
+*.local
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
