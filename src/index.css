@@ -3,8 +3,52 @@
 @tailwind utilities;
 
 @layer base {
+  /* Smooth scrolling for entire page */
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-black text-gray-100;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  *, *::before, *::after {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Smooth focus states */
+  :focus-visible {
+    outline: 2px solid rgba(139, 92, 246, 0.5);
+    outline-offset: 2px;
+    transition: outline 0.2s ease;
+  }
+
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.5), rgba(6, 182, 212, 0.5));
+    border-radius: 4px;
+    transition: background 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.7), rgba(6, 182, 212, 0.7));
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(139, 92, 246, 0.5) rgba(255, 255, 255, 0.05);
   }
 }
 
@@ -23,11 +67,11 @@
     border: 1px solid rgba(255, 255, 255, 0.15);
   }
 
-  .glass-red {
-    background: rgba(239, 68, 68, 0.08);
+  .glass-accent {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(6, 182, 212, 0.08));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.2);
   }
 
   .glass-hover {
@@ -43,15 +87,15 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.1), transparent);
     transition: left 0.5s ease;
   }
 
   .glass-hover:hover {
-    background: rgba(239, 68, 68, 0.1);
-    border-color: rgba(239, 68, 68, 0.3);
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(6, 182, 212, 0.08));
+    border-color: rgba(139, 92, 246, 0.4);
     transform: translateX(2px);
-    box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.25), 0 0 40px rgba(6, 182, 212, 0.1);
   }
 
   .glass-hover:hover::before {
@@ -59,9 +103,9 @@
   }
 
   .glass-active {
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.1));
-    border: 1px solid rgba(239, 68, 68, 0.4);
-    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3), inset 0 0 20px rgba(239, 68, 68, 0.1);
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(236, 72, 153, 0.12), rgba(6, 182, 212, 0.1));
+    border: 1px solid rgba(139, 92, 246, 0.5);
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.3), 0 0 50px rgba(236, 72, 153, 0.15), inset 0 0 20px rgba(139, 92, 246, 0.1);
     position: relative;
   }
 
@@ -72,7 +116,126 @@
     top: 0;
     bottom: 0;
     width: 3px;
-    background: linear-gradient(180deg, rgba(239, 68, 68, 0.8), rgba(220, 38, 38, 0.8));
+    background: linear-gradient(180deg, rgba(139, 92, 246, 1), rgba(236, 72, 153, 0.8), rgba(6, 182, 212, 0.8));
     border-radius: 0 4px 4px 0;
+  }
+
+  /* Gradient text utility */
+  .text-gradient {
+    background: linear-gradient(135deg, #8b5cf6, #ec4899, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Animated gradient border */
+  .border-gradient {
+    border: 1px solid transparent;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)) padding-box,
+                linear-gradient(135deg, rgba(139, 92, 246, 0.5), rgba(236, 72, 153, 0.3), rgba(6, 182, 212, 0.5)) border-box;
+  }
+
+  /* Smooth card animations */
+  .smooth-appear {
+    animation: smoothAppear 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes smoothAppear {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Smooth scale on hover */
+  .smooth-scale {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .smooth-scale:hover {
+    transform: scale(1.02);
+  }
+
+  /* Smooth glow effect */
+  .smooth-glow {
+    transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .smooth-glow:hover {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.2), 
+                0 0 60px rgba(6, 182, 212, 0.1),
+                0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Sidebar responsive styles */
+@layer components {
+  /* Menu toggle button - always visible */
+  .menu-toggle-btn {
+    display: flex;
+  }
+
+  /* Close button - always visible */
+  .sidebar-close-btn {
+    display: flex;
+  }
+
+  /* Overlay - hidden by default */
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 40;
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      backdrop-filter: blur(0px);
+    }
+    to {
+      opacity: 1;
+      backdrop-filter: blur(8px);
+    }
+  }
+
+  /* Sidebar - hidden by default, slides in from left */
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    height: 100vh;
+    max-height: 100vh;
+    will-change: transform;
+  }
+
+  /* Sidebar open state */
+  .sidebar-open {
+    transform: translateX(0);
+  }
+
+  /* Smooth scroll for sidebar content */
+  .sidebar {
+    scroll-behavior: smooth;
+  }
+
+  /* Tablet and desktop - wider sidebar */
+  @media (min-width: 640px) {
+    .sidebar {
+      width: 280px;
+    }
   }
 }

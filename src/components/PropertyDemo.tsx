@@ -150,24 +150,24 @@ const highlightCSS = (code: string): JSX.Element[] => {
 
 export default function PropertyDemo({ property }: PropertyDemoProps) {
   return (
-    <div className="glass-strong rounded-lg p-6 mb-6 border-red-500/10 hover:border-red-500/20 transition-all duration-300">
-      <h3 className="text-2xl font-bold text-white mb-2">{property.name}</h3>
-      <p className="text-gray-200 mb-4">{property.description}</p>
+    <div className="glass-strong rounded-lg p-5 border-gradient smooth-scale smooth-glow transition-all duration-500 ease-out">
+      <h3 className="text-xl font-bold text-gradient mb-1 transition-all duration-300">{property.name}</h3>
+      <p className="text-gray-200 mb-3 text-sm">{property.description}</p>
 
-      <div className="mb-4">
-        <h4 className="text-sm font-semibold text-gray-200 mb-2">Syntax:</h4>
-        <code className="block glass glass-red rounded px-3 py-2 text-sm font-mono">
+      <div className="mb-3">
+        <h4 className="text-xs font-semibold text-gray-200 mb-1">Syntax:</h4>
+        <code className="block glass glass-accent rounded px-3 py-1.5 text-sm font-mono">
           {highlightCSS(property.syntax)}
         </code>
       </div>
 
-      <div className="mb-4">
-        <h4 className="text-sm font-semibold text-gray-200 mb-2">Common Values:</h4>
+      <div className="mb-3">
+        <h4 className="text-xs font-semibold text-gray-200 mb-1">Common Values:</h4>
         <div className="flex flex-wrap gap-2">
           {property.values.map((value) => (
             <span
               key={value}
-              className="glass text-blue-400 px-3 py-1 rounded-full text-sm font-mono border border-blue-500/30"
+              className="glass text-cyan-400 px-3 py-1 rounded-full text-sm font-mono border border-cyan-500/30 hover:border-violet-500/50 hover:bg-violet-500/10 hover:scale-105 transition-all duration-300 ease-out cursor-default"
             >
               {value}
             </span>
@@ -176,14 +176,14 @@ export default function PropertyDemo({ property }: PropertyDemoProps) {
       </div>
 
       <div>
-        <h4 className="text-sm font-semibold text-gray-200 mb-3">Live Examples:</h4>
-        <div className="space-y-4">
+        <h4 className="text-xs font-semibold text-gray-200 mb-2">Live Examples:</h4>
+        <div className="space-y-3">
           {property.examples.map((example, index) => (
-            <div key={index} className="glass rounded-lg overflow-hidden border border-red-500/10 hover:border-red-500/20 transition-all duration-300">
-              <div className="glass glass-red px-4 py-2 border-b border-red-500/10">
+            <div key={index} className="glass rounded-lg overflow-hidden border border-violet-500/20 hover:border-pink-500/40 hover:shadow-lg hover:shadow-pink-500/10 transition-all duration-500 ease-out">
+              <div className="glass glass-accent px-3 py-1.5 border-b border-violet-500/20">
                 <code className="text-sm font-mono">{highlightCSS(example.code)}</code>
               </div>
-              <div className="p-6 glass flex items-center justify-center min-h-[120px]">
+              <div className="p-4 glass flex items-center justify-center min-h-[100px]">
                 {property.id === 'box-shadow' ? (
                   <div 
                     style={{
